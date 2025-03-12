@@ -4,6 +4,8 @@
   "description": "Backend per la web app",
   "main": "app.js",
   "scripts": {
+    "start": "node --env-file=.env app.js",
+    "watch": "node --env-file=.env --watch app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
