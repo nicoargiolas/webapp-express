@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-// const cors = require("cors");
+const cors = require("cors");
 const port = process.env.PORT;
 
 app.use(express.json());
-// app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: process.env.CORS_ORIGIN }));
 
 // Importazione
 // const posts = require('./data/posts');
