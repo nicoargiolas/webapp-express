@@ -12,7 +12,8 @@ function index(req, res) {
         // versione mappata del risultato
         const movies = result.map(movie => {
             return {
-                ...movie
+                ...movie,
+                image: req.imagePath + movie.image
             }
         })
 

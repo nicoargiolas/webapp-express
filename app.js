@@ -7,10 +7,12 @@ app.use(express.json());
 app.use(cors({ origin: process.env.CORS_ORIGIN }));
 
 // Importazione
-// const posts = require('./data/posts');
 const moviesRouter = require('./routers/movies-router');
 const errorsHandler = require('./middlewares/errorsHandler');
 const notFound = require('./middlewares/notFound');
+// Middleware di gestione path imgs
+const imagePathMiddleware = require('./middlewares/setImagePath');
+app.use(imagePathMiddleware);
 
 app.use(express.static('public'));
 
