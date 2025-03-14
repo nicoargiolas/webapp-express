@@ -48,6 +48,9 @@ function show(req, res) {
             // aggiorniamo l'oggetto movie con le review ritornate
             movie.reviews = reviewResult;
 
+            // aggiungiamo il valore path img da middleware
+            movie.image = req.imagePath + movie.image;
+
             // ritorniamo l'oggetto completo
             res.json(movie);
         });
