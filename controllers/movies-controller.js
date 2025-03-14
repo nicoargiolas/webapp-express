@@ -74,4 +74,29 @@ function storeReview(req, res) {
 
 }
 
-module.exports = { index, show, storeReview }
+function store(req, res, next) {
+
+    const { title, director, genre, release_year, abstract } = req.body;
+
+    // Ad imageName assegniamo come valore il nome del file passato
+    const imageName = `${req.file.filename}`;
+
+    const query = "INSERT INTO movies (title, director, genre, release_year, abstract, image) VALUES (?, ?, ?, ?, ?, ?)";
+
+    connection.query(query,
+        [title, director, genre, release_year, abstract, imageName],
+        (err, result) => {
+            if (err) {
+                console.log(err)
+                return next(new Error("Errore interno del server"));
+            }
+
+            res.status(201).json({
+                status: "success",
+                message: "Film aggiunto con successo!",
+            });
+        })
+
+}
+
+module.exports = { index, show, storeReview, store }
